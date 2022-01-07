@@ -21,7 +21,7 @@ const babelLoader = {
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js', // Default for boilerplate generation.
+  entry: './src/index.tsx', // Default for boilerplate generation.
   output: {
     path: path.resolve('dist'),
     filename: 'deck.js'
@@ -32,7 +32,7 @@ module.exports = {
     // within _this_ project's `node_modules` traversal tree.
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.([jt])sx?$/,
         use: [babelLoader]
       },
       // `.md` files are processed as pure text.

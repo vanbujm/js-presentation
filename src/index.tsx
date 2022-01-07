@@ -22,29 +22,23 @@ import {
   CodePane,
   MarkdownSlide,
   MarkdownSlideSet,
-  Notes
+  Notes,
 } from 'spectacle';
 
-const formidableLogo =
-  'https://avatars2.githubusercontent.com/u/5078602?s=280&v=4';
+const formidableLogo = 'https://avatars2.githubusercontent.com/u/5078602?s=280&v=4';
 
 // SPECTACLE_CLI_THEME_START
 const theme = {
   fonts: {
     header: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
-    text: '"Open Sans Condensed", Helvetica, Arial, sans-serif'
-  }
+    text: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
+  },
 };
 // SPECTACLE_CLI_THEME_END
 
 // SPECTACLE_CLI_TEMPLATE_START
 const template = () => (
-  <FlexBox
-    justifyContent="space-between"
-    position="absolute"
-    bottom={0}
-    width={1}
-  >
+  <FlexBox justifyContent="space-between" position="absolute" bottom={0} width={1}>
     <Box padding="0 1em">
       <FullScreen />
     </Box>
@@ -103,16 +97,16 @@ const Presentation = () => (
       transition={{
         from: {
           transform: 'scale(0.5) rotate(45deg)',
-          opacity: 0
+          opacity: 0,
         },
         enter: {
           transform: 'scale(1) rotate(0)',
-          opacity: 1
+          opacity: 1,
         },
         leave: {
           transform: 'scale(0.2) rotate(315deg)',
-          opacity: 0
-        }
+          opacity: 0,
+        },
       }}
       backgroundColor="tertiary"
       backgroundImage="url(https://github.com/FormidableLabs/dogs/blob/main/src/beau.jpg?raw=true)"
@@ -234,24 +228,16 @@ const Presentation = () => (
       `}
     </MarkdownSlide>
     <Slide>
-      <Grid
-        flex={1}
-        gridTemplateColumns="50% 50%"
-        gridTemplateRows="50% 50%"
-        height="100%"
-      >
+      <Grid flex={1} gridTemplateColumns="50% 50%" gridTemplateRows="50% 50%" height="100%">
         <FlexBox alignItems="center" justifyContent="center">
           <Heading>This is a 4x4 Grid</Heading>
         </FlexBox>
         <FlexBox alignItems="center" justifyContent="center">
-          <Text textAlign="center">
-            With all the content aligned and justified center.
-          </Text>
+          <Text textAlign="center">With all the content aligned and justified center.</Text>
         </FlexBox>
         <FlexBox alignItems="center" justifyContent="center">
           <Text textAlign="center">
-            It uses Spectacle <CodeSpan>{'<Grid />'}</CodeSpan> and{' '}
-            <CodeSpan>{'<FlexBox />'}</CodeSpan> components.
+            It uses Spectacle <CodeSpan>{'<Grid />'}</CodeSpan> and <CodeSpan>{'<FlexBox />'}</CodeSpan> components.
           </Text>
         </FlexBox>
         <FlexBox alignItems="center" justifyContent="center">
