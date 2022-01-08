@@ -6,7 +6,7 @@ export const YouTubeSlide = () => (
   <StyledSlide>
     <FlexBox height="100%" flexDirection="column" zIndex={999}>
       <Heading margin="0px 32px" color="primary" fontSize="h3">
-        Thanks!
+        Embedded Youtube
       </Heading>
       <iframe
         width="560"

@@ -8,6 +8,7 @@ import { Mesmerize } from './Mesmerize';
 import { WebSlide } from './WebSlide';
 import { ArtSlide } from './Art';
 import { YouTubeSlide } from './YouTube';
+import { QRSlide } from './QR';
 
 const MetaSlide = React.lazy(() => import('./MetaSlide'));
 
@@ -45,6 +46,7 @@ const Presentation = () => (
     <ArtSlide />
     <WebSlide />
     <YouTubeSlide />
+    <QRSlide />
   </Deck>
 );
 
