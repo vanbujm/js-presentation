@@ -1,99 +1,64 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 
 import {
-  FlexBox,
-  Heading,
-  SpectacleLogo,
-  UnorderedList,
-  CodeSpan,
-  OrderedList,
-  ListItem,
-  FullScreen,
-  Progress,
   Appear,
-  Stepper,
-  Slide,
-  Deck,
-  Text,
-  Grid,
   Box,
-  Image,
   CodePane,
+  CodeSpan,
+  Deck,
+  FlexBox,
+  Grid,
+  Heading,
+  Image,
+  ListItem,
   MarkdownSlide,
   MarkdownSlideSet,
-  Notes,
+  OrderedList,
+  Text,
+  UnorderedList,
 } from 'spectacle';
+import { template } from './template';
+import { SlideFragments } from './slideFragments';
+import { StyledSlide } from './styledSlide';
+import { Mesmerize } from './Mesmerize';
+
+const MetaSlide = React.lazy(() => import('./MetaSlide'));
 
 const formidableLogo = 'https://avatars2.githubusercontent.com/u/5078602?s=280&v=4';
 
-// SPECTACLE_CLI_THEME_START
 const theme = {
+  colors: {
+    primary: 'rgba(51,51,51,0.8)',
+    secondary: 'rgba(51,51,51,0.8)',
+  },
   fonts: {
-    header: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
-    text: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
+    header: '"Oxygen", Helvetica, Arial, sans-serif',
+    text: '"Oxygen", Helvetica, Arial, sans-serif',
   },
 };
-// SPECTACLE_CLI_THEME_END
-
-// SPECTACLE_CLI_TEMPLATE_START
-const template = () => (
-  <FlexBox justifyContent="space-between" position="absolute" bottom={0} width={1}>
-    <Box padding="0 1em">
-      <FullScreen />
-    </Box>
-    <Box padding="1em">
-      <Progress />
-    </Box>
-  </FlexBox>
-);
-// SPECTACLE_CLI_TEMPLATE_END
-
-const SlideFragments = () => (
-  <>
-    <Slide>
-      <Text>This is a slide fragment.</Text>
-    </Slide>
-    <Slide>
-      <Text>This is also a slide fragment.</Text>
-      <Appear>
-        <Text>This item shows up!</Text>
-      </Appear>
-      <Appear>
-        <Text>This item also shows up!</Text>
-      </Appear>
-    </Slide>
-  </>
-);
 
 const Presentation = () => (
   <Deck theme={theme} template={template}>
-    <Slide>
-      <FlexBox height="100%">
-        <SpectacleLogo size={500} />
+    <StyledSlide>
+      <FlexBox justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
+        <Heading>💀I wrote this presentation in JavaScript💀</Heading>
+        <Image src={'https://avatars.githubusercontent.com/u/2577981?v=4'} />
       </FlexBox>
-      <Notes>
-        Spectacle supports notes per slide.
-        <ol>
-          <li>Notes can now be HTML markup!</li>
-          <li>Lists can make it easier to make points.</li>
-        </ol>
-      </Notes>
-    </Slide>
-    <Slide>
-      <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" fontSize="150px">
-          ✨<i>Spectacle</i> ✨
-        </Heading>
-        <Heading margin="0px" fontSize="h2">
-          A ReactJS Presentation Library
-        </Heading>
-        <Heading margin="0px 32px" color="primary" fontSize="h3">
-          Where you can write your decks in JSX, Markdown, or MDX!
-        </Heading>
-      </FlexBox>
-    </Slide>
-    <Slide
+    </StyledSlide>
+    <Mesmerize />
+    <StyledSlide>
+      <Suspense
+        fallback={
+          <FlexBox justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
+            <Heading>Loading...</Heading>
+          </FlexBox>
+        }
+      >
+        <MetaSlide />
+      </Suspense>
+    </StyledSlide>
+    <StyledSlide
       transition={{
         from: {
           transform: 'scale(0.5) rotate(45deg)',
@@ -133,8 +98,8 @@ const Presentation = () => (
           <CodeSpan>backgroundRepeat</CodeSpan>
         </ListItem>
       </UnorderedList>
-    </Slide>
-    <Slide>
+    </StyledSlide>
+    <StyledSlide>
       <Heading>Animated Elements</Heading>
       <OrderedList>
         <Appear>
@@ -149,8 +114,8 @@ const Presentation = () => (
           </ListItem>
         </Appear>
       </OrderedList>
-    </Slide>
-    <Slide>
+    </StyledSlide>
+    <StyledSlide>
       <FlexBox>
         <Text>These</Text>
         <Text>Text</Text>
@@ -180,9 +145,9 @@ const Presentation = () => (
             </FlexBox>
           ))}
       </Grid>
-    </Slide>
+    </StyledSlide>
     <SlideFragments />
-    <Slide>
+    <StyledSlide>
       <CodePane language="jsx">{`
         import { createClient, Provider } from 'urql';
 
@@ -202,11 +167,11 @@ const Presentation = () => (
           }
         }
         `}</CodePane>
-    </Slide>
+    </StyledSlide>
     <div>
-      <Slide>
+      <StyledSlide>
         <Heading>This is a slide embedded in a div</Heading>
-      </Slide>
+      </StyledSlide>
     </div>
     <MarkdownSlide componentProps={{ color: 'yellow' }}>
       {`
@@ -227,7 +192,7 @@ const Presentation = () => (
        - ...one at a time.
       `}
     </MarkdownSlide>
-    <Slide>
+    <StyledSlide>
       <Grid flex={1} gridTemplateColumns="50% 50%" gridTemplateRows="50% 50%" height="100%">
         <FlexBox alignItems="center" justifyContent="center">
           <Heading>This is a 4x4 Grid</Heading>
@@ -244,7 +209,7 @@ const Presentation = () => (
           <Box width={200} height={200} backgroundColor="secondary" />
         </FlexBox>
       </Grid>
-    </Slide>
+    </StyledSlide>
     <MarkdownSlideSet>
       {`
         # This is the first slide of a Markdown Slide Set
