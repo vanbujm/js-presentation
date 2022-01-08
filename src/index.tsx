@@ -27,7 +27,7 @@ const Presentation = () => (
   <Deck theme={theme} template={template}>
     <StyledSlide>
       <FlexBox justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
-        <Heading>💀I wrote this presentation in JavaScript💀</Heading>
+        <Heading fontSize={'3rem'}>💀I wrote this presentation in JavaScript💀</Heading>
         <Image src={'https://avatars.githubusercontent.com/u/2577981?v=4'} />
       </FlexBox>
     </StyledSlide>

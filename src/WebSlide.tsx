@@ -21,7 +21,7 @@ export const WebSlide = () => {
     <StyledSlide>
       <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px 32px" color="primary" fontSize="h3">
-          Web Slide
+          Website inside my presentation
         </Heading>
         <input type={'text'} onBlur={(e) => setUrl(e.target.value)} />
         {url !== '' && <div dangerouslySetInnerHTML={{ __html: data }} />}

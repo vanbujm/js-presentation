@@ -32,7 +32,7 @@ export const Mesmerize = () => (
   <AnimatedSlide>
     <FlexBox height="100%" flexDirection="column" zIndex={999}>
       <Heading margin="0px 32px" color="primary" fontSize="h3">
-        My Slides will mesmerize you
+        My slides will mesmerize you
       </Heading>
     </FlexBox>
   </AnimatedSlide>

@@ -21,7 +21,7 @@ export const MetaSlide = () => {
   return (
     <FlexBox height="100%" flexDirection="column">
       <Heading margin="0px 32px" color="primary" fontSize="h3">
-        My Slides display the code for my slides
+        My slides display the code for my slides
       </Heading>
       {data === '' && <GetCodeButton onClick={getCode}>Get Code!</GetCodeButton>}
       {data !== '' && (
