@@ -24,7 +24,7 @@ export const AnimatedSlide = styled(Slide)`
     background: linear-gradient(180deg, hsl(355, 100%, 50%) 0%, rgb(129, 0, 138) 100%);
     background-size: 200% 200%;
     background-position: 0% 100%;
-    animation: ${colorCycle} 5s ease infinite reverse;
+    animation: ${colorCycle} 2s ease infinite reverse;
   }
 `;
 

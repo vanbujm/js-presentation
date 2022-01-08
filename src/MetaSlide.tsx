@@ -1,40 +1,34 @@
 import { CodePane, FlexBox, Heading } from 'spectacle';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { GetCodeButton } from './GetCodeButton';
 
 export const MetaSlide = () => {
-  const [data, setData] = useState('Loading...');
+  const [data, setData] = useState('');
 
-  const getIndex = useCallback(() => {
-    fetch('./0.deck.js').then((response) => {
-      if (response.status !== 200) {
-        return;
-      }
-      response.text().then(function (data) {
-        const lines = data.split('\n');
+  const getCode = useCallback(async () => {
+    const response = await fetch('./0.deck.js');
 
-        if (lines.length > 25) {
-          const start = Math.floor((lines.length - 25) / 2);
-          const linesToShow = lines.slice(start, start + 20);
-          setData(linesToShow.join('\n'));
-        } else {
-          setData(data);
-        }
-      });
-    });
+    if (response.status !== 200) return;
+
+    const data = await response.text();
+    const lines = data.split('\n');
+
+    const start = 49;
+    const linesToShow = lines.slice(start, start + 20);
+    setData(linesToShow.join('\n'));
   }, []);
-
-  useEffect(() => {
-    getIndex();
-  }, [getIndex]);
 
   return (
     <FlexBox height="100%" flexDirection="column">
       <Heading margin="0px 32px" color="primary" fontSize="h3">
         My Slides display the code for my slides
       </Heading>
-      <CodePane language="javascript" showLineNumbers={false}>
-        {data}
-      </CodePane>
+      {data === '' && <GetCodeButton onClick={getCode}>Get Code!</GetCodeButton>}
+      {data !== '' && (
+        <CodePane language="javascript" showLineNumbers={false}>
+          {data}
+        </CodePane>
+      )}
     </FlexBox>
   );
 };
